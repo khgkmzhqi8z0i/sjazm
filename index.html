@@ -1,192 +1,226 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Playlist Kholiddzz</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kholiddzz</title>
 
-  <meta name="google-site-verification" content="60TreAIViUexQV1aSoa8V5PVdEBBa0UNfqDPAVkP0aQ" />
-  <meta name="description" content="Nikmati Playlist Kholiddzz berisi lagu-lagu pilihan terbaik. Dengarkan musik favorit secara online dengan mudah.">
-  <meta name="keywords" content="Playlist Kholiddzz, Kholiddzz musik, playlist lagu, dengarkan musik online">
+  <!-- JANGAN DIUBAH -->
+  <meta name="google-site-verification" content="60TreAIViUexQV1aSoa8V5PVdEBBa0UNfqDPAVkP0aQ">
+
+  <meta name="description" content="Kholiddzz adalah individu yang dikenal dengan pendekatan konsisten serta citra yang relatif tertutup dalam ruang publik.">
+
   <style>
-    :root{
-      --bg1:#0f1f17; --bg2:#0b3522; --brand:#1db954; --text:#e9f6ee; --muted:#b9d4c7;
-      --card:rgba(255,255,255,.06);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
     body{
-      min-height:100vh; color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: radial-gradient(1200px 800px at 10% -10%, #135b36 0%, transparent 60%),
-                  radial-gradient(1000px 700px at 110% 10%, #0e3a26 0%, transparent 55%),
-                  linear-gradient(140deg,var(--bg1),var(--bg2));
-      overflow-x:hidden;
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#ffffff;
+      color:#202122;
     }
-    .wrap{max-width:980px;margin:auto;padding:28px 16px 64px}
-    header{text-align:center;padding:24px 0;animation:fadeDown .8s ease}
-    header h1{margin-bottom:10px;font-size:clamp(28px,6vw,56px);letter-spacing:.06em;font-weight:800;text-transform:uppercase}
-    header p{max-width:760px;margin:auto;color:var(--muted);font-size:clamp(15px,2.6vw,18px);line-height:1.6}
+    a{color:#0645ad;text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:26px 0 22px;animation:fadeUp .9s ease}
-    .btn{
-      position:relative;overflow:hidden;border:0;border-radius:999px;padding:14px 22px;font-weight:700;
-      background:var(--brand);color:#07140d;cursor:pointer;text-decoration:none;
-      display:inline-flex;align-items:center;gap:10px;font-size:16px;
-      box-shadow:0 10px 30px rgba(29,185,84,.35),inset 0 -2px 0 rgba(0,0,0,.15);
-      transition:transform .15s ease,box-shadow .2s ease;
+    .topbar{
+      background:#f8f9fa;
+      border-bottom:1px solid #a2a9b1;
+      padding:8px 16px;
+      font-size:14px;
+      color:#54595d;
     }
-    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.2)}
-    .btn.ghost{background:transparent;color:var(--muted)}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(29,185,84,.45)}
-    .btn:active{transform:scale(0.95);transition:transform .05s}
 
-    .btn::after{
-      content:"";position:absolute;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.4);
-      top:var(--y);left:var(--x);transform:translate(-50%,-50%);
-      transition:width .4s ease,height .4s ease,opacity .8s ease;opacity:0;pointer-events:none;
+    .container{
+      max-width:900px;
+      margin:auto;
+      padding:24px 16px 60px;
     }
-    .btn:active::after{width:200px;height:200px;opacity:1;transition:0s}
 
-    .player-card{background:var(--card);border-radius:22px;padding:18px;backdrop-filter:blur(10px);box-shadow:0 25px 60px rgba(0,0,0,.35);animation:fadeUp .9s ease}
-    .embed{width:100%;height:380px;border:0;border-radius:14px;display:block;overflow:hidden}
-
-    .grid{display:grid;gap:16px;margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .tile{
-      position:relative;overflow:hidden;color:#fff;
-      background:var(--card);border-radius:16px;min-height:160px;padding:16px;
-      display:flex;align-items:flex-end;justify-content:flex-start;
-      box-shadow:0 10px 26px rgba(0,0,0,.25);transition:transform .25s ease, box-shadow .25s ease;
-      opacity:0;transform:translateY(40px);
-      animation:fadeTile .8s forwards;
+    h1{
+      font-family:"Linux Libertine", Georgia, serif;
+      font-size:32px;
+      font-weight:normal;
+      border-bottom:1px solid #a2a9b1;
+      margin-bottom:6px;
+      padding-bottom:6px;
     }
-    .tile:nth-child(1){animation-delay:.2s}
-    .tile:nth-child(2){animation-delay:.4s}
-    .tile:nth-child(3){animation-delay:.6s}
-    .tile:nth-child(4){animation-delay:.8s}
-    .tile:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 18px 40px rgba(0,0,0,.4)}
-    .tile img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6);z-index:0;transition:.4s}
-    .tile:hover img{filter:brightness(.75) saturate(1.2)}
-    .tile b{font-size:16px;position:relative;z-index:1}
 
-    .section{margin-top:42px}
-    .section h2{margin:0 0 12px;font-size:clamp(20px,3.6vw,28px)}
-    .section p{margin:0 0 18px;color:var(--muted)}
+    .subtitle{
+      font-size:14px;
+      color:#54595d;
+      margin-bottom:20px;
+    }
 
-    footer{text-align:center;margin-top:42px;font-size:13px;line-height:1.6}
-    footer span{display:inline-flex;align-items:center;gap:6px;opacity:.9}
-    footer svg{animation:shine 3s infinite linear}
+    .ad{
+      border:1px solid #c8ccd1;
+      background:#f8f9fa;
+      color:#54595d;
+      font-size:13px;
+      padding:12px;
+      margin:20px 0;
+      text-align:center;
+    }
 
-    /* snackbar */
-    .snack{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(20px);background:#11251a;padding:10px 14px;border-radius:10px;font-size:14px;opacity:0;transition:.3s;z-index:50}
-    .snack.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .ad small{
+      display:block;
+      font-size:11px;
+      color:#72777d;
+      margin-bottom:6px;
+    }
 
-    /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:100}
-    .modal-backdrop.show{opacity:1;pointer-events:auto}
-    .modal{background:var(--bg1);padding:20px;border-radius:18px;max-width:320px;width:90%;transform:scale(.85);opacity:0;transition:.3s}
-    .modal-backdrop.show .modal{transform:scale(1);opacity:1}
-    .modal-backdrop.closing{opacity:0;pointer-events:none}
-    .modal-backdrop.closing .modal{transform:scale(.85);opacity:0}
+    .toc{
+      border:1px solid #a2a9b1;
+      background:#f8f9fa;
+      padding:10px;
+      font-size:14px;
+      margin:16px 0 22px;
+      width:fit-content;
+    }
 
-    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeTile{to{opacity:1;transform:translateY(0)}}
-    @keyframes shine{
-      0%{filter:drop-shadow(0 0 0px #1DA1F2)}
-      50%{filter:drop-shadow(0 0 6px #1DA1F2)}
-      100%{filter:drop-shadow(0 0 0px #1DA1F2)}
+    .toc-title{
+      font-weight:bold;
+      margin-bottom:6px;
+    }
+
+    .toc ol{
+      margin:0;
+      padding-left:18px;
+    }
+
+    h2{
+      font-size:20px;
+      font-weight:normal;
+      border-bottom:1px solid #a2a9b1;
+      margin-top:28px;
+      padding-bottom:4px;
+    }
+
+    p{
+      line-height:1.6;
+      margin:12px 0;
+      font-size:15px;
+    }
+
+    .note{
+      font-size:13px;
+      color:#54595d;
+    }
+
+    ul{
+      margin:10px 0 10px 20px;
+    }
+
+    footer{
+      margin-top:40px;
+      font-size:13px;
+      color:#54595d;
+      border-top:1px solid #a2a9b1;
+      padding-top:12px;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Hindia Sama .Feast</h1>
-      <p>Kumpulan lagu pilihan dari Kholiddzz yang cocok untuk semua suasana — belajar, santai, atau sekadar rebahan.</p>
-    </header>
 
-    <div class="actions">
-      <a class="btn" href="https://open.spotify.com/playlist/2nYXA1sfeJrATmHC6R05NY" target="_blank">Buka di Spotify</a>
-      <a class="btn secondary" href="spotify:playlist:2nYXA1sfeJrATmHC6R05NY">Buka di Aplikasi</a>
-      <button class="btn ghost" id="copyLink">Salin Link</button>
-      <button class="btn ghost" id="shareBtn">Bagikan</button>
+  <div class="topbar">
+    Wikipedia  •  Artikel  •  Pembicaraan  •  Baca  •  Sunting  •  Riwayat
+  </div>
+
+  <div class="container">
+    <h1>Kholiddzz</h1>
+    <div class="subtitle">
+      Dari Wikipedia
     </div>
 
-    <div class="player-card">
-      <iframe class="embed" src="https://open.spotify.com/embed/playlist/2nYXA1sfeJrATmHC6R05NY" allow="autoplay; clipboard-write; encrypted-media; fullscreen"></iframe>
+    <!-- IKLAN ATAS -->
+    <div class="ad">
+      <small>Iklan</small>
+      Ruang promosi digital independen
     </div>
 
-    <div class="section">
-      <h2>Kenapa wajib dicoba</h2>
-      <p>Lirik dalem, produksi bersih, dan cerita yang relate buat sehari-hari.</p>
-      <div class="grid">
-        <div class="tile"><img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=800"/><b>Lirik ngena</b></div>
-        <div class="tile"><img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?q=80&w=800"/><b>Nuansa chill</b></div>
-        <div class="tile"><img src="https://images.unsplash.com/photo-1487215078519-e21cc028cb29?q=80&w=800"/><b>Cocok buat story</b></div>
-        <div class="tile"><img src="https://images.unsplash.com/photo-1518972559570-7cc1309f3229?q=80&w=800"/><b>Gratis & legal</b></div>
-      </div>
+    <p>
+      <b>Kholiddzz</b> adalah individu asal Kalimantan Selatan yang dikenal
+      melalui pendekatan konsisten serta kecenderungan menjaga eksposur publik
+      dalam batas yang terbatas. Namanya mulai dikenal secara bertahap
+      melalui aktivitas daring yang tidak bersifat agresif.
+    </p>
+
+    <div class="toc">
+      <div class="toc-title">Daftar isi</div>
+      <ol>
+        <li><a href="#latar">Latar belakang</a></li>
+        <li><a href="#aktivitas">Aktivitas dan pendekatan</a></li>
+        <li><a href="#citra">Citra publik</a></li>
+        <li><a href="#kehadiran">Kehadiran digital</a></li>
+        <li><a href="#pranala">Pranala luar</a></li>
+        <li><a href="#catatan">Catatan</a></li>
+      </ol>
     </div>
+
+    <h2 id="latar">Latar belakang</h2>
+    <p>
+      Kholiddzz lahir pada tahun 2009. Informasi mengenai kehidupan pribadinya
+      tidak banyak dipublikasikan ke ruang terbuka, sejalan dengan sikapnya
+      yang cenderung membatasi informasi personal. Pendekatan ini membuat
+      profilnya berkembang secara organik tanpa narasi berlebihan.
+    </p>
+
+    <!-- IKLAN TENGAH -->
+    <div class="ad">
+      <small>Iklan</small>
+      Mendukung konten informatif berbasis teks
+    </div>
+
+    <h2 id="aktivitas">Aktivitas dan pendekatan</h2>
+    <p>
+      Dalam berbagai aktivitas digital, Kholiddzz dikenal mengutamakan
+      konsistensi dibandingkan pencapaian instan. Pendekatan tersebut
+      tercermin dari cara ia membangun kehadiran daring secara bertahap,
+      tanpa strategi yang berorientasi pada viralitas sesaat.
+    </p>
+
+    <p>
+      Pola ini membuat aktivitasnya lebih stabil dan berkelanjutan,
+      meskipun tidak selalu berada dalam sorotan utama.
+    </p>
+
+    <h2 id="citra">Citra publik</h2>
+    <p>
+      Citra publik Kholiddzz sering digambarkan sebagai sosok yang tenang,
+      terstruktur, dan relatif tertutup. Ia tidak dikenal melalui kontroversi,
+      melainkan melalui kesinambungan sikap serta konsistensi dalam aktivitasnya.
+    </p>
+
+    <h2 id="kehadiran">Kehadiran digital</h2>
+    <p>
+      Selain aktivitas umum di ruang daring, Kholiddzz juga memiliki
+      kehadiran di beberapa platform media sosial. Kehadiran ini digunakan
+      sebagai sarana ekspresi dan dokumentasi aktivitas, tanpa pendekatan
+      promosi yang berlebihan.
+    </p>
+
+    <!-- IKLAN BAWAH -->
+    <div class="ad">
+      <small>Iklan</small>
+      Platform ini menyediakan ruang promosi non-komersial
+    </div>
+
+    <h2 id="pranala">Pranala luar</h2>
+    <ul>
+      <li>
+        <a href="https://www.tiktok.com/@kholiddzz?_r=1&_t=ZS-92laj0TVubd" target="_blank">
+          Akun TikTok resmi Kholiddzz
+        </a>
+      </li>
+    </ul>
+
+    <h2 id="catatan">Catatan</h2>
+    <p class="note">
+      Artikel ini ditulis dari
+      Wikimedia.
+    </p>
 
     <footer>
-      <span>
-        <!-- centang biru -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="12" fill="#1DA1F2"/>
-          <path fill="#fff" d="M10.2 14.6l-2.3-2.3 1.1-1.1 1.2 1.2 3.9-3.9 1.1 1.1-5 5z"/>
-        </svg>
-        Terverifikasi  •  Playlist Resmi Dari Kholiddzz
-      </span>
-      <br>
-      <span><b> Developer Lagu</b> -Baskara Putra- </span>
+      Teks tersedia untuk tujuan informasi umum.
     </footer>
   </div>
 
-  <div id="snack" class="snack">Tersalin</div>
-
-  <!-- Modal Bagikan -->
-  <div id="shareModal" class="modal-backdrop">
-    <div class="modal">
-      <h3 style="margin-bottom:12px">Bagikan Playlist</h3>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <button class="btn secondary" onclick="copyAndToast()">Salin Link</button>
-        <a class="btn secondary" href="https://wa.me/?text=Dengerin%20Playlist%20Kholiddzz%20ini%20https://open.spotify.com/playlist/2nYXA1sfeJrATmHC6R05NY" target="_blank">Bagikan ke WhatsApp</a>
-        <a class="btn secondary" href="https://twitter.com/intent/tweet?url=https://open.spotify.com/playlist/2nYXA1sfeJrATmHC6R05NY&text=Coba%20dengerin%20Playlist%20Kholiddzz%20ini" target="_blank">Bagikan ke Twitter</a>
-        <button class="btn ghost" onclick="closeShare()">Tutup</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const url="https://open.spotify.com/playlist/2nYXA1sfeJrATmHC6R05NY";
-    function toast(msg){
-      const box=document.getElementById('snack');
-      box.textContent=msg;
-      box.classList.add('show');
-      setTimeout(()=>box.classList.remove('show'),2000);
-    }
-    async function copyAndToast(){
-      try{
-        await navigator.clipboard.writeText(url);
-        toast('Link disalin');
-      }catch{
-        const tmp=document.createElement('textarea');
-        tmp.value=url;document.body.appendChild(tmp);tmp.select();document.execCommand('copy');document.body.removeChild(tmp);
-        toast('Link disalin');
-      }
-    }
-    document.getElementById('copyLink').addEventListener('click',copyAndToast);
-    document.getElementById('shareBtn').addEventListener('click',()=>{document.getElementById('shareModal').classList.add('show')});
-    function closeShare(){
-      const modal=document.getElementById('shareModal');
-      modal.classList.add('closing');
-      setTimeout(()=>{modal.classList.remove('show','closing');},300);
-    }
-    document.querySelectorAll('.btn').forEach(btn=>{
-      btn.addEventListener('click',e=>{
-        const rect=btn.getBoundingClientRect();
-        btn.style.setProperty('--x',`${e.clientX-rect.left}px`);
-        btn.style.setProperty('--y',`${e.clientY-rect.top}px`);
-      });
-    });
-  </script>
 </body>
 </html>
